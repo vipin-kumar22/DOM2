@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Learning Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .task-list {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .task:last-child {
+      border-bottom: none;
+    }
+
+    .task input {
+      margin-right: 10px;
+    }
+
+    #achievements {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #e8f5e9;
+      border-radius: 10px;
+      width: 80%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .achievement {
+      font-size: 1rem;
+      margin: 5px 0;
+      color: #2e7d32;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .dropdown-content label {
+      padding: 8px 12px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>DOM Learning Tracker</h1>
+
+  <div class="container">
+    <div class="task-list" id="taskList">
+      <h2>Tasks</h2>
+
+      <!-- Day 1 -->
+      <div class="dropdown">
+        <button>Day 1: Introduction to DOM</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="What is the DOM?"> What is the DOM?
+          </label>
+          <label>
+            <input type="checkbox" data-task="DOM Tree Structure (Nodes, Elements, Attributes, Text)"> DOM Tree Structure (Nodes, Elements, Attributes, Text)
+          </label>
+          <label>
+            <input type="checkbox" data-task="Accessing the DOM using document"> Accessing the DOM using document
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="dropdown">
+        <button>Day 2: Selecting Elements</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="DOM selection methods"> DOM selection methods
+          </label>
+          <label>
+            <input type="checkbox" data-task="getElementById(), getElementsByClassName(), getElementsByTagName()"> getElementById(), getElementsByClassName(), getElementsByTagName()
+          </label>
+          <label>
+            <input type="checkbox" data-task="Modern methods: querySelector(), querySelectorAll()"> Modern methods: querySelector(), querySelectorAll()
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="dropdown">
+        <button>Day 3: DOM Properties and Methods</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Accessing and modifying properties (innerHTML, textContent, value)"> Accessing and modifying properties (innerHTML, textContent, value)
+          </label>
+          <label>
+            <input type="checkbox" data-task="Attributes (getAttribute(), setAttribute(), removeAttribute())"> Attributes (getAttribute(), setAttribute(), removeAttribute())
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="dropdown">
+        <button>Day 4: DOM Traversal</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Navigating the DOM (parentNode, children, nextSibling, previousSibling)"> Navigating the DOM (parentNode, children, nextSibling, previousSibling)
+          </label>
+          <label>
+            <input type="checkbox" data-task="Understanding childNodes vs children"> Understanding childNodes vs children
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="dropdown">
+        <button>Day 5: Creating and Manipulating Elements</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Creating new elements: createElement()"> Creating new elements: createElement()
+          </label>
+          <label>
+            <input type="checkbox" data-task="Adding elements: appendChild(), insertBefore()"> Adding elements: appendChild(), insertBefore()
+          </label>
+          <label>
+            <input type="checkbox" data-task="Removing elements: remove()"> Removing elements: remove()
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="dropdown">
+        <button>Day 6: Event Handling (Basic)</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Event listeners: addEventListener()"> Event listeners: addEventListener()
+          </label>
+          <label>
+            <input type="checkbox" data-task="Event types (click, input, keydown, etc.)"> Event types (click, input, keydown, etc.)
+          </label>
+          <label>
+            <input type="checkbox" data-task="Inline vs external event handling"> Inline vs external event handling
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="dropdown">
+        <button>Day 7: Event Handling (Advanced)</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Event bubbling and capturing"> Event bubbling and capturing
+          </label>
+          <label>
+            <input type="checkbox" data-task="Preventing default actions: preventDefault()"> Preventing default actions: preventDefault()
+          </label>
+          <label>
+            <input type="checkbox" data-task="Stopping propagation: stopPropagation()"> Stopping propagation: stopPropagation()
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 8 -->
+      <div class="dropdown">
+        <button>Day 8: Styling with JavaScript</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Accessing and modifying styles: style property"> Accessing and modifying styles: style property
+          </label>
+          <label>
+            <input type="checkbox" data-task="Managing CSS classes: classList (add, remove, toggle, contains)"> Managing CSS classes: classList (add, remove, toggle, contains)
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 9 -->
+      <div class="dropdown">
+        <button>Day 9: Advanced DOM</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Working with forms (input, textarea, select)"> Working with forms (input, textarea, select)
+          </label>
+          <label>
+            <input type="checkbox" data-task="Handling custom events"> Handling custom events
+          </label>
+          <label>
+            <input type="checkbox" data-task="DOM mutation: MutationObserver"> DOM mutation: MutationObserver
+          </label>
+        </div>
+      </div>
+
+      <!-- Day 10 -->
+      <div class="dropdown">
+        <button>Day 10: DOM Optimization and Performance</button>
+        <div class="dropdown-content">
+          <label>
+            <input type="checkbox" data-task="Document fragments for performance"> Document fragments for performance
+          </label>
+          <label>
+            <input type="checkbox" data-task="Debouncing and throttling DOM updates"> Debouncing and throttling DOM updates
+          </label>
+          <label>
+            <input type="checkbox" data-task="Avoiding reflows and repaints"> Avoiding reflows and repaints
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div id="achievements" class="hidden">
+      <h2>Achievements</h2>
+      <div id="achievementList"></div>
+    </div>
+  </div>
+
+  <script>
+    const tasks = document.querySelectorAll('input[type="checkbox"]');
+    const achievementList = document.getElementById('achievementList');
+    const achievementsBlock = document.getElementById('achievements');
+
+    // Load saved tasks from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+      savedTasks.forEach(taskName => {
+        const task = Array.from(tasks).find(input => input.dataset.task === taskName);
+        if (task) {
+          task.checked = true;
+          addAchievement(taskName);
+        }
+      });
+      toggleAchievements();
+    });
+
+    // Add achievement when task is checked
+    tasks.forEach(task => {
+      task.addEventListener('change', () => {
+        const taskName = task.dataset.task;
+        if (task.checked) {
+          addAchievement(taskName);
+          saveTask(taskName);
+        } else {
+          removeAchievement(taskName);
+          removeTask(taskName);
+        }
+        toggleAchievements();
+      });
+    });
+
+    // Add to achievement block
+    function addAchievement(taskName) {
+      const achievement = document.createElement('div');
+      achievement.textContent = taskName;
+      achievement.classList.add('achievement');
+      achievement.dataset.task = taskName;
+      achievementList.appendChild(achievement);
+    }
+
+    // Remove from achievement block
+    function removeAchievement(taskName) {
+      const achievement = achievementList.querySelector(`[data-task="${taskName}"]`);
+      if (achievement) achievement.remove();
+    }
+
+    // Save completed task to localStorage
+    function saveTask(taskName) {
+      const savedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+      if (!savedTasks.includes(taskName)) {
+        savedTasks.push(taskName);
+        localStorage.setItem('completedTasks', JSON.stringify(savedTasks));
+      }
+    }
+
+    // Remove task from localStorage
+    function removeTask(taskName) {
+      const savedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+      const updatedTasks = savedTasks.filter(task => task !== taskName);
+      localStorage.setItem('completedTasks', JSON.stringify(updatedTasks));
+    }
+
+    // Show/hide achievements block
+    function toggleAchievements() {
+      achievementsBlock.classList.toggle('hidden', !achievementList.hasChildNodes());
+    }
+  </script>
+</body>
+</html>
